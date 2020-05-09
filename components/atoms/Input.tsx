@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 export enum InputType {
   Button = 'button',
@@ -35,17 +36,41 @@ export interface InputProps {
   value?: InputValue;
 }
 
+const StyledLabel = styled.label<InputProps>`
+  display: flex;
+  padding: 4px 0;
+  flex-direction: ${({ type }): string => (type === InputType.Checkbox ? 'row-reverse' : 'column')};
+  justify-content: ${({ type }): string => (type === InputType.Checkbox ? 'flex-end' : 'flex-start')};
+  
+  input {
+    display: block;
+    border: 2px solid black;
+    flex-grow: ${({ type }): number => (type === InputType.Checkbox ? 0 : 1)};
+  }
+  
+  span::after {
+    display: ${({ required }): string => (required ? 'inline' : 'none')};
+    content: ' *';
+    color: red;
+  }
+`;
+
 let idCounter = 0;
 
-const Input = ({
-  type, name, required, value, label,
-}: InputProps): JSX.Element => {
+const Input = (props: InputProps): JSX.Element => {
+  const {
+    type,
+    name,
+    required,
+    value,
+    label,
+  } = props;
   const id = `input-${name}-${idCounter += 1}`;
   return (
-    <label htmlFor={id}>
+    <StyledLabel htmlFor={id} {...props}>
       <span>{label}</span>
       <input id={id} type={type} name={name} required={required || false} defaultValue={value} />
-    </label>
+    </StyledLabel>
   );
 };
 

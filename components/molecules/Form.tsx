@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import Input, { InputProps, InputValue } from '../atoms/Input';
 
 export interface FormValues {
@@ -10,6 +11,23 @@ export interface FormProps {
   onSubmit: (data: FormValues) => void;
 }
 
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 10px 5px;
+`;
+
+const StyledButton = styled.button`
+  display: inline-block;
+  color: white;
+  font-weight: bold;
+  background: green;
+  margin-left: auto;
+  border: 2px solid black;
+  box-shadow: 2px 2px 2px black;
+`;
+
 const Form = ({ inputs, onSubmit }: FormProps): JSX.Element => {
   const formRef = React.useRef(null);
 
@@ -20,18 +38,17 @@ const Form = ({ inputs, onSubmit }: FormProps): JSX.Element => {
         .reduce((acc: FormValues, cur: HTMLInputElement) => ({ ...acc, [cur.name]: cur.value }), {}) as FormValues;
       onSubmit(output);
     }
-
     e.preventDefault();
     return false;
   };
 
   return (
-    <form onSubmit={onSubmitWrapper} ref={formRef}>
+    <StyledForm onSubmit={onSubmitWrapper} ref={formRef}>
       {inputs.map((input) => <Input {...input} key={input.name} />)}
-    </form>
+      <StyledButton type="submit">Submit</StyledButton>
+    </StyledForm>
   );
 };
-
 
 Form.displayName = 'Form';
 
