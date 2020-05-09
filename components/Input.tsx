@@ -27,10 +27,11 @@ export enum InputType {
 
 interface Input {
   type: InputType;
+  name: string;
 }
 
-const Input = ({ type }: Input): JSX.Element => (
-  <input type={type} />
+const Input = ({ type, name }: Input): JSX.Element => (
+  <input type={type} name={name} />
 );
 
 Input.displayName = 'Input';
