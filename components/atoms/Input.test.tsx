@@ -25,10 +25,10 @@ describe('Input', () => {
     expect(newsLetterWrapper.prop('required')).to.equal(false);
   });
 
-  it('should allow setting an initial value', () => {
+  it('should allow setting an default value', () => {
     const jobDescriptionWrapper = shallow(
       <Input type={InputType.Text} name="job-description" value="Software Engineer" />,
     );
-    expect(jobDescriptionWrapper.prop('value')).to.equal('Software Engineer');
+    expect(jobDescriptionWrapper.prop('defaultValue')).to.equal('Software Engineer');
   });
 });

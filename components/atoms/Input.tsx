@@ -37,7 +37,7 @@ export interface InputProps {
 const Input = ({
   type, name, required, value,
 }: InputProps): JSX.Element => (
-  <input type={type} name={name} required={required || false} value={value} />
+  <input type={type} name={name} required={required || false} defaultValue={value} />
 );
 
 Input.displayName = 'Input';
