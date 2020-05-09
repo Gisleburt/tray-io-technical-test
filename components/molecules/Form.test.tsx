@@ -1,5 +1,5 @@
+import 'jsdom-global/register';
 import React from 'react';
-import jsdom from 'jsdom-global';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
@@ -7,14 +7,6 @@ import Form, { FormValues } from './Form';
 import Input, { InputProps, InputType } from '../atoms/Input';
 
 describe('Form', () => {
-  before(function () {
-    this.jsdom = jsdom();
-  });
-
-  after(function () {
-    this.jsdom();
-  });
-
   it('should take an array of input parameters to produce the form', () => {
     const inputs: InputProps[] = [
       { name: 'name', type: InputType.Text, required: true },
