@@ -25,14 +25,19 @@ export enum InputType {
   Week = 'week',
 }
 
+export type InputValue = string | string[] | number
+
 export interface InputProps {
   type: InputType;
   name: string;
   required?: boolean;
+  value?: InputValue;
 }
 
-const Input = ({ type, name, required }: InputProps): JSX.Element => (
-  <input type={type} name={name} required={required || false} />
+const Input = ({
+  type, name, required, value,
+}: InputProps): JSX.Element => (
+  <input type={type} name={name} required={required || false} value={value} />
 );
 
 Input.displayName = 'Input';

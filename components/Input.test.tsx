@@ -24,4 +24,11 @@ describe('Input', () => {
     const newsLetterWrapper = shallow(<Input type={InputType.Checkbox} name="news-letter" />);
     expect(newsLetterWrapper.prop('required')).to.equal(false);
   });
+
+  it('should allow setting an initial value', () => {
+    const jobDescriptionWrapper = shallow(
+      <Input type={InputType.Text} name="job-description" value="Software Engineer" />,
+    );
+    expect(jobDescriptionWrapper.prop('value')).to.equal('Software Engineer');
+  });
 });
