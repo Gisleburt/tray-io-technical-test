@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "lint": "eslint pages/**/*.ts*",
     "start": "next start",
     "test": "mocha --config .mocha.js"
   },
@@ -21,9 +22,17 @@
     "@types/node": "^13.13.5",
     "@types/react": "^16.9.34",
     "@types/styled-components": "^5.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.31.0",
+    "@typescript-eslint/parser": "^2.31.0",
     "chai": "^4.2.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
     "mocha": "^7.1.2",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
