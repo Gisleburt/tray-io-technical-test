@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "lint": "eslint pages/**/*.ts*",
+    "lint": "eslint {components,pages}/**/*.ts*",
     "start": "next start",
     "test": "mocha --config .mocha.js"
   },
