@@ -4,7 +4,7 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import Form, { FormValues } from './Form';
-import Input, { InputProps, InputType } from './Input';
+import Input, { InputProps, InputType } from '../atoms/Input';
 
 describe('Form', () => {
   before(function () {
@@ -21,7 +21,7 @@ describe('Form', () => {
       { name: 'role', type: InputType.Text },
       { name: 'submit', type: InputType.Submit },
     ];
-    const formWrapper = shallow(<Form inputs={inputs} callback={(): void => { /* do nothing */ }} />);
+    const formWrapper = shallow(<Form inputs={inputs} onSubmit={(): void => { /* do nothing */ }} />);
     expect(formWrapper.find(Input)).to.have.length(3);
   });
 
@@ -34,7 +34,7 @@ describe('Form', () => {
     const callback = (data): void => {
       receivedData = data;
     };
-    const formWrapper = mount(<Form inputs={inputs} callback={callback} />);
+    const formWrapper = mount(<Form inputs={inputs} onSubmit={callback} />);
     formWrapper.simulate('submit');
 
     expect(receivedData).to.deep.equal({

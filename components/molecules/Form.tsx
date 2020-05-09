@@ -1,5 +1,5 @@
 import React from 'react';
-import Input, { InputProps, InputValue } from './Input';
+import Input, { InputProps, InputValue } from '../atoms/Input';
 
 export interface FormValues {
   [key: string]: InputValue;
@@ -7,18 +7,18 @@ export interface FormValues {
 
 export interface FormProps {
   inputs: InputProps[];
-  callback: (data: FormValues) => void;
+  onSubmit: (data: FormValues) => void;
 }
 
-const Form = ({ inputs, callback }: FormProps): JSX.Element => {
+const Form = ({ inputs, onSubmit }: FormProps): JSX.Element => {
   const formRef = React.useRef(null);
 
-  const onSubmit = (e): boolean => {
+  const onSubmitWrapper = (e): boolean => {
     if (formRef.current) {
       const inputDomElements = formRef.current.getElementsByTagName('input');
       const output = Array.from(inputDomElements)
         .reduce((acc: FormValues, cur: HTMLInputElement) => ({ ...acc, [cur.name]: cur.value }), {}) as FormValues;
-      callback(output);
+      onSubmit(output);
     }
 
     e.preventDefault();
@@ -26,7 +26,7 @@ const Form = ({ inputs, callback }: FormProps): JSX.Element => {
   };
 
   return (
-    <form onSubmit={onSubmit} ref={formRef}>
+    <form onSubmit={onSubmitWrapper} ref={formRef}>
       {inputs.map((input) => <Input {...input} key={input.name} />)}
     </form>
   );
