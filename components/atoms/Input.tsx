@@ -30,15 +30,24 @@ export type InputValue = string | string[] | number
 export interface InputProps {
   type: InputType;
   name: string;
+  label?: string;
   required?: boolean;
   value?: InputValue;
 }
 
+let idCounter = 0;
+
 const Input = ({
-  type, name, required, value,
-}: InputProps): JSX.Element => (
-  <input type={type} name={name} required={required || false} defaultValue={value} />
-);
+  type, name, required, value, label,
+}: InputProps): JSX.Element => {
+  const id = `input-${name}-${idCounter += 1}`;
+  return (
+    <label htmlFor={id}>
+      <span>{label}</span>
+      <input id={id} type={type} name={name} required={required || false} defaultValue={value} />
+    </label>
+  );
+};
 
 Input.displayName = 'Input';
 
