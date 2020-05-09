@@ -16,4 +16,12 @@ describe('Input', () => {
     const jobDescriptionWrapper = shallow(<Input type={InputType.Text} name="job-description" />);
     expect(jobDescriptionWrapper.prop('name')).to.equal('job-description');
   });
+
+  it('should allow setting to required', () => {
+    const termsWrapper = shallow(<Input type={InputType.Checkbox} name="terms" required />);
+    expect(termsWrapper.prop('required')).to.equal(true);
+
+    const newsLetterWrapper = shallow(<Input type={InputType.Checkbox} name="news-letter" />);
+    expect(newsLetterWrapper.prop('required')).to.equal(false);
+  });
 });

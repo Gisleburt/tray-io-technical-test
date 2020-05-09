@@ -28,10 +28,11 @@ export enum InputType {
 interface Input {
   type: InputType;
   name: string;
+  required?: boolean;
 }
 
-const Input = ({ type, name }: Input): JSX.Element => (
-  <input type={type} name={name} />
+const Input = ({ type, name, required }: Input): JSX.Element => (
+  <input type={type} name={name} required={required || false} />
 );
 
 Input.displayName = 'Input';
