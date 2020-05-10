@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "yarn build && next export",
+    "export": "yarn build && next export -o docs",
     "lint": "eslint {content,components,pages}/**/*.ts*",
-    "serve": "yarn export && serve out",
+    "serve": "yarn export && serve docs",
     "start": "next start",
     "test": "mocha --config .mocha.js"
   },
