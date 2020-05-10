@@ -1,7 +1,7 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import IndexPage from './index';
+import IndexPage from '../pages/index';
 import Form, { FormValues } from '../components/molecules/Form';
 import { privacyInputs, userInputs } from '../content/forms';
 import DoneInfo from '../components/molecules/DoneInfo';

@@ -10,8 +10,13 @@ $ yarn
 ```
 
 Run locally
-```
+```sh
 yarn dev
+```
+
+Build static version
+```sh
+yarn export
 ```
 
 Notes
@@ -24,3 +29,7 @@ Notes
   but it works
 - Try to loosely use Atomic Design to organise but for such a small project its OTT
 - Try to keep page tests flexible, but useful, so they aren't broken any time I want to make a small change 
+- Ran into a problem where console log wasn't working in Chrome, turned out to be a chrome bug so discounted this time
+- Noticed that checkboxes didn't return useful values, and testing checkboxes with form submits doesn't seem to work the
+  normal Enzyme way so had to improvise changing the dom manually.
+- Skipped logicless components as any test would be brittle and break for 
