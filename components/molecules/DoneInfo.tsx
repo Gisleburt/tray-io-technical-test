@@ -20,13 +20,13 @@ const GreenDiv = styled.div`
   }
 `;
 
-const Done = (): JSX.Element => (
+const DoneInfo = (): JSX.Element => (
   <GreenDiv>
     <div className="jumboCheck">✔</div>
     <p>Please verify your email address, you should have received and email from us already!</p>
   </GreenDiv>
 );
 
-Done.displayName = 'Done';
+DoneInfo.displayName = 'DoneInfo';
 
-export default Done;
+export default DoneInfo;
