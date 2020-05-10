@@ -14,7 +14,11 @@ export const userInputs: InputProps[] = [
 ];
 
 export const privacyInputs: InputProps[] = [
-  { name: 'updates', label: 'Receive updates about Tray.io by email', type: InputType.Checkbox },
+  {
+    name: 'updates',
+    label: 'Receive updates about Tray.io by email',
+    type: InputType.Checkbox,
+  },
   {
     name: 'communications',
     label: 'Receive communication by email for other products created by the Tray.io team',

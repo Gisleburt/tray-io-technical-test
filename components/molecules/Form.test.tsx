@@ -34,4 +34,25 @@ describe('Form', () => {
       email: 'example@example.com',
     });
   });
+
+  it('should return a boolean for checkboxes', () => {
+    const inputs: InputProps[] = [
+      { name: 'happy', type: InputType.Checkbox },
+      { name: 'sad', type: InputType.Checkbox },
+    ];
+    let receivedData: FormValues = {};
+    const callback = (data): void => {
+      receivedData = data;
+    };
+    const formWrapper = mount(<Form inputs={inputs} onSubmit={callback} />);
+    formWrapper.find('input[name="happy"]')
+      .getDOMNode()
+      .setAttribute('checked', 'checked');
+    formWrapper.update().simulate('submit');
+
+    expect(receivedData).to.deep.equal({
+      happy: true,
+      sad: false,
+    });
+  });
 });

@@ -26,7 +26,7 @@ export enum InputType {
   Week = 'week',
 }
 
-export type InputValue = string | string[] | number
+export type InputValue = string | string[] | number;
 
 export interface InputProps {
   type: InputType;

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Input, { InputProps, InputValue } from '../atoms/Input';
+import Input, { InputProps, InputType, InputValue } from '../atoms/Input';
 
 export interface FormValues {
-  [key: string]: InputValue;
+  [key: string]: InputValue | boolean;
 }
 
 export interface FormProps {
@@ -35,7 +35,12 @@ const Form = ({ inputs, onSubmit }: FormProps): JSX.Element => {
     if (formRef.current) {
       const inputDomElements = formRef.current.getElementsByTagName('input');
       const output = Array.from(inputDomElements)
-        .reduce((acc: FormValues, cur: HTMLInputElement) => ({ ...acc, [cur.name]: cur.value }), {}) as FormValues;
+        .reduce((acc: FormValues, cur: HTMLInputElement) => {
+          if (cur.type === InputType.Checkbox) {
+            return { ...acc, [cur.name]: cur.checked };
+          }
+          return { ...acc, [cur.name]: cur.value };
+        }, {}) as FormValues;
       onSubmit(output);
     }
     e.preventDefault();
