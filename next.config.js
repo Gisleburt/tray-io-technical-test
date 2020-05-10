@@ -1,10 +1,14 @@
 module.exports = (phase, { defaultConfig }) => {
-
-  return {
-    ...defaultConfig,
-    experimental: {
-      ...defaultConfig.experimental,
-      basePath: '/tray-io-technical-test',
+  console.log(process.env.NODE_ENV);
+  if(process.env.NODE_ENV === 'deployment') {
+    return {
+      ...defaultConfig,
+      experimental: {
+        ...defaultConfig.experimental,
+        basePath: '/tray-io-technical-test',
+      }
     }
   }
+
+  return defaultConfig;
 }

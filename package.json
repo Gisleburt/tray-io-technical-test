@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "yarn build && rm -r docs && next export -o docs && touch docs/.nojekyll",
+    "export": "yarn build && next export",
+    "export:deployment": "NODE_ENV=deployment yarn export && rm -rf docs && mv out docs && touch docs/.nojekyll",
     "lint": "eslint {content,components,pages}/**/*.ts*",
-    "serve": "yarn export && serve docs",
+    "serve": "yarn export && serve out",
     "start": "next start",
     "test": "mocha --config .mocha.js"
   },
