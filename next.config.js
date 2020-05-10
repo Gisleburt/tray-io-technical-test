@@ -1,6 +1,7 @@
 module.exports = (phase, { defaultConfig }) => {
-  console.log(process.env.NODE_ENV);
-  if(process.env.NODE_ENV === 'deployment') {
+  console.log(`Building for ${process.env.NODE_ENV}`);
+
+  if(process.env.NODE_ENV === 'github') {
     return {
       ...defaultConfig,
       experimental: {

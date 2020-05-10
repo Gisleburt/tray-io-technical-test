@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "export": "yarn build && next export",
-    "export:deployment": "NODE_ENV=deployment yarn export && rm -rf docs && mv out docs && touch docs/.nojekyll",
+    "export:github": "NODE_ENV=github yarn export && rm -rf docs && mv out docs && touch docs/.nojekyll",
     "lint": "eslint {content,components,pages}/**/*.ts*",
     "serve": "yarn export && serve out",
     "start": "next start",
