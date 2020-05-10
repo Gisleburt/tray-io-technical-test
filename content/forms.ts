@@ -9,7 +9,11 @@ export const userInputs: InputProps[] = [
     name: 'email', label: 'email:', required: true, type: InputType.Email,
   },
   {
-    name: 'password', label: 'password:', required: true, type: InputType.Password,
+    name: 'password',
+    label: 'password:',
+    required: true,
+    type: InputType.Password,
+    pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{9,}',
   },
 ];
 

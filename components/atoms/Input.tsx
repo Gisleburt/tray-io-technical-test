@@ -34,6 +34,7 @@ export interface InputProps {
   label?: string;
   required?: boolean;
   value?: InputValue;
+  pattern?: string;
 }
 
 const StyledLabel = styled.label<InputProps>`
@@ -64,12 +65,20 @@ const Input = (props: InputProps): JSX.Element => {
     required,
     value,
     label,
+    pattern,
   } = props;
   const id = `input-${name}-${idCounter += 1}`;
   return (
     <StyledLabel htmlFor={id} {...props}>
       <span>{label}</span>
-      <input id={id} type={type} name={name} required={required || false} defaultValue={value} />
+      <input
+        id={id}
+        type={type}
+        name={name}
+        required={required || false}
+        defaultValue={value}
+        pattern={pattern}
+      />
     </StyledLabel>
   );
 };

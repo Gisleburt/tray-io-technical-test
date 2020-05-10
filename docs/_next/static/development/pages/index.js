@@ -72,7 +72,8 @@ var Input = function Input(props) {
       name = props.name,
       required = props.required,
       value = props.value,
-      label = props.label;
+      label = props.label,
+      pattern = props.pattern;
   var id = "input-".concat(name, "-").concat(idCounter += 1);
   return __jsx(StyledLabel, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_0__["default"])({
     htmlFor: id
@@ -80,14 +81,14 @@ var Input = function Input(props) {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 70,
+      lineNumber: 72,
       columnNumber: 5
     }
   }), __jsx("span", {
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 71,
+      lineNumber: 73,
       columnNumber: 7
     }
   }, label), __jsx("input", {
@@ -96,10 +97,11 @@ var Input = function Input(props) {
     name: name,
     required: required || false,
     defaultValue: value,
+    pattern: pattern,
     __self: _this,
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 72,
+      lineNumber: 74,
       columnNumber: 7
     }
   }));
@@ -359,7 +361,8 @@ var userInputs = [{
   name: 'password',
   label: 'password:',
   required: true,
-  type: _components_atoms_Input__WEBPACK_IMPORTED_MODULE_0__["InputType"].Password
+  type: _components_atoms_Input__WEBPACK_IMPORTED_MODULE_0__["InputType"].Password,
+  pattern: '(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{9,}'
 }];
 var privacyInputs = [{
   name: 'updates',
